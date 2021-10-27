@@ -17,7 +17,7 @@ app.listen(port, () => {
   console.log("Server listening on port " + port);
 });
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + "/build"));
 app.use(cors());
 
 connexionDB();
