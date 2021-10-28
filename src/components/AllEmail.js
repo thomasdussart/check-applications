@@ -10,7 +10,7 @@ const AllApplications = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1337/getAll")
+      .get("https://parallaxawards.herokuapp.com/getAll")
       .then((app) => {
         setData(app);
       })
@@ -27,7 +27,7 @@ const AllApplications = () => {
     const mails = {
       emails: emails,
     };
-    fetch("http://localhost:1337/bulkEmail", {
+    fetch("https://parallaxawards.herokuapp.com/bulkEmail", {
       method: "POST",
       body: JSON.stringify(mails),
       headers: {

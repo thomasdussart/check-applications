@@ -48,6 +48,16 @@ p a {
 
 /* CONTENU */
 
+div.addJury {
+  margin: 1rem;
+}
+
+div.addJury {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .App-content {
   width: 100%;
   height: 100%;

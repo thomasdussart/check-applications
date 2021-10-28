@@ -4,6 +4,8 @@ import ByCategory from "./components/ByCategory";
 import AllEmail from "./components/AllEmail";
 import Menu from "./components/Menu";
 import "./css/styles.css";
+import AddJury from "./components/AddJury";
+import AllJuries from "./components/AllJuries";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Switch>
             {<Route path="/all-applications" component={AllApplications} />}
             {<Route path="/categories" component={ByCategory} />}
+            {<Route path="/addJury" component={AddJury} />}
+            {<Route path="/getJuries" component={AllJuries} />}
             {<Route path="/all-emails" component={AllEmail} />}
           </Switch>
         </section>

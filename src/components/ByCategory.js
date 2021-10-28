@@ -11,7 +11,7 @@ const ByCategory = () => {
     const cate = {
       categorie: categorie,
     };
-    fetch("http://localhost:1337/getCategory", {
+    fetch("https://parallaxawards.herokuapp.com/getCategory", {
       method: "POST",
       body: JSON.stringify(cate),
       headers: {

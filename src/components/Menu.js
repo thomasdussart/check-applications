@@ -17,6 +17,16 @@ const Menu = () => {
           Par catégorie
         </Link>
       </p>
+      <p className="">
+        <Link className="" to={"/addJury"}>
+          Ajouter membre Jury
+        </Link>
+      </p>
+      <p className="">
+        <Link className="" to={"/getJuries"}>
+          Membres du Jury
+        </Link>
+      </p>
       {/* <p className="">
         <Link className="" to={"/all-emails"}>
           Tous les emails

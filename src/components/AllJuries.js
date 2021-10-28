@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Loading from "./Loading";
 import Pagination from "@mui/material/Pagination";
 
-const AllApplications = () => {
+const AllJuries = () => {
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
   let [error, setError] = useState(null);
@@ -15,7 +15,7 @@ const AllApplications = () => {
   };
 
   useEffect(() => {
-    fetch("https://parallaxawards.herokuapp.com/getAll")
+    fetch("https://parallaxawards.herokuapp.com/getJury")
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -39,8 +39,8 @@ const AllApplications = () => {
       <h1>All Applications</h1>
       <h2>
         {data.length <= 1
-          ? `Il y a ${data.length} candidature`
-          : `Il y a ${data.length} candidatures`}
+          ? `Il y a ${data.length} jury`
+          : `Il y a ${data.length} juries`}
       </h2>
       {isLoading ? (
         <div className="fetching">
@@ -54,23 +54,12 @@ const AllApplications = () => {
               <li key={data.category}>Catégorie: {app.category}</li>
               <li key={data.name}>Nom: {app.name}</li>
               <li key={data.firstname}>Prénom: {app.firstname}</li>
-              <li key={data.birthdate}>Date de naissance: {app.birthdate}</li>
-              <li key={data.birthLocation}>
-                Lieu de naissance: {app.birthLocation}
-              </li>
-              <li key={data.nationality}>Nationalité: {app.nationality}</li>
               <li key={data.email}>Email: {app.email}</li>
               <li key={data.phone}>Téléphone: {app.phone}</li>
               <li key={data.adress}>Adresse: {app.adress}</li>
               <li key={data.instaHandle}>Instagram: {app.instaHandle}</li>
               <li key={data.facebookHandle}>Facebook: {app.facebookHandle}</li>
               <li key={data.website}>Website: {app.website}</li>
-              <li key={data.title}>Titre de l'oeuvre: {app.title}</li>
-              <li key={data.artDate}>
-                Date de création de l'oeuvre: {app.artDate}
-              </li>
-              <li key={data.context}>Contexte: {app.context}</li>
-              <li key={data.link}>Lien de l'oeuvre: {app.link}</li>
             </ul>
           ))}
         </div>
@@ -86,4 +75,4 @@ const AllApplications = () => {
   );
 };
 
-export default AllApplications;
+export default AllJuries;
