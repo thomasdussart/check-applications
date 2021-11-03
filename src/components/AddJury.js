@@ -3,7 +3,7 @@ import Login from "./Login";
 
 const AddJury = () => {
   const add = () => {
-    let categorie = document.getElementById("categories").value;
+    let categorie = document.getElementById("juryCategory").value;
     let spec = document.getElementById("spec").value;
     let name = document.getElementById("name").value;
     let firstname = document.getElementById("firstname").value;
