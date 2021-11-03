@@ -24,7 +24,6 @@ function App() {
         <section className="App-content">
           <Switch>
             {<Route exact path="/" component={Login} />}
-
             {<Route path="/all-applications" component={AllApplications} />}
             {<Route path="/categories" component={ByCategory} />}
             {<Route path="/addJury" component={AddJury} />}

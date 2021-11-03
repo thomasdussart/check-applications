@@ -19,26 +19,31 @@ const Login = () => {
     }).then((res) => {
       if (res.status === 200) {
         window.localStorage.setItem("isLoggedIn", true);
-        window.location.href = "/all-applications";
+        window.location.href = "/";
       } else {
         alert("Invalid credentials");
       }
     });
   };
-  return (
-    <div className="loginForm">
-      <label>Username</label>
-      <input type="text" name="username" id="username"></input>
-      <label>Password</label>
-      <input type="password" name="password" id="password"></input>
-      <input
-        type="submit"
-        id="submitForm"
-        onClick={() => handleLogin()}
-        value="Login"
-      ></input>
-    </div>
-  );
+
+  if (!window.localStorage.getItem("isLoggedIn")) {
+    return (
+      <div className="loginForm">
+        <label>Username</label>
+        <input type="text" name="username" id="username"></input>
+        <label>Password</label>
+        <input type="password" name="password" id="password"></input>
+        <input
+          type="submit"
+          id="submitForm"
+          onClick={() => handleLogin()}
+          value="Login"
+        ></input>
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
 };
 
 export default Login;
