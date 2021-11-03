@@ -1,18 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
-import Pagination from "@mui/material/Pagination";
 
 const AllApplications = () => {
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
-  let [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
-
-  const perPage = 5;
-
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
 
   useEffect(() => {
     fetch("https://parallaxawards.herokuapp.com/getAll")
@@ -27,7 +18,6 @@ const AllApplications = () => {
       })
       .catch((error) => {
         console.error("Error fetching data :", error);
-        setError(error);
       })
       .finally(() => {
         setisLoading(false);
@@ -75,13 +65,6 @@ const AllApplications = () => {
           ))}
         </div>
       )}
-      <div className="pagination">
-        <Pagination
-          count={data.length / perPage}
-          showFirstButton
-          showLastButton
-        />
-      </div>
     </div>
   );
 };

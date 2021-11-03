@@ -1,11 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const AddJury = () => {
-  let [data, setData] = useState([]);
-  let [isLoading, setisLoading] = useState(true);
-  let [show, setShow] = useState(false);
-  let [error, setError] = useState(null);
-
   const add = () => {
     let categorie = document.getElementById("categories").value;
     let name = document.getElementById("name").value;
@@ -16,16 +11,6 @@ const AddJury = () => {
     let instaHandle = document.getElementById("instaHandle").value;
     let facebookHandle = document.getElementById("facebookHandle").value;
     let website = document.getElementById("website").value;
-
-    console.log(categorie);
-    console.log(name);
-    console.log(firstname);
-    console.log(email);
-    console.log(phone);
-    console.log(adress);
-    console.log(instaHandle);
-    console.log(facebookHandle);
-    console.log(website);
 
     const jury = {
       categorie: categorie,

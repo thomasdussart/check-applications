@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const ByCategory = () => {
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
-  let [show, setShow] = useState(false);
-  let [error, setError] = useState(null);
 
   const fetchByCategory = () => {
     let categorie = document.getElementById("categories").value;
@@ -29,11 +27,9 @@ const ByCategory = () => {
       })
       .catch((error) => {
         console.error("Error fetching cat :", error);
-        setError(error);
       })
       .finally((fin) => {
         setisLoading(false);
-        setShow(true);
       });
   };
 

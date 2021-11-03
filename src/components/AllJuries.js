@@ -1,18 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
-import Pagination from "@mui/material/Pagination";
 
 const AllJuries = () => {
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
-  let [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
-
-  const perPage = 5;
-
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
 
   useEffect(() => {
     fetch("https://parallaxawards.herokuapp.com/getJury")
@@ -27,7 +18,6 @@ const AllJuries = () => {
       })
       .catch((error) => {
         console.error("Error fetching data :", error);
-        setError(error);
       })
       .finally(() => {
         setisLoading(false);
@@ -51,7 +41,7 @@ const AllJuries = () => {
           {data.map((app) => (
             <ul>
               <input value={app._id} hidden disabled />
-              <li key={data.category}>Catégorie: {app.category}</li>
+              <li key={data.categorie}>Catégorie: {app.categorie}</li>
               <li key={data.name}>Nom: {app.name}</li>
               <li key={data.firstname}>Prénom: {app.firstname}</li>
               <li key={data.email}>Email: {app.email}</li>
@@ -64,13 +54,6 @@ const AllJuries = () => {
           ))}
         </div>
       )}
-      <div className="pagination">
-        <Pagination
-          count={data.length / perPage}
-          showFirstButton
-          showLastButton
-        />
-      </div>
     </div>
   );
 };

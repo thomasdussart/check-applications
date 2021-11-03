@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 
-const AllEmail = () => {
+const AllEmailJury = () => {
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
 
@@ -10,7 +10,7 @@ const AllEmail = () => {
 
   useEffect(() => {
     axios
-      .get("https://parallaxawards.herokuapp.com/getAll")
+      .get("https://parallaxawards.herokuapp.com/getJury")
       .then((app) => {
         setData(app);
       })
@@ -29,7 +29,7 @@ const AllEmail = () => {
         mail: mail.textContent,
       };
       console.log(mail.textContent);
-      fetch("https://parallaxawards.herokuapp.com/bulkEmail", {
+      fetch("https://parallaxawards.herokuapp.com/bulkEmailJury", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -77,4 +77,4 @@ const AllEmail = () => {
   }
 };
 
-export default AllEmail;
+export default AllEmailJury;

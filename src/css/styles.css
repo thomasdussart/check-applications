@@ -55,15 +55,17 @@ div.addJury {
 div.addJury {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  height: 70vh;
 }
 
 .App-content {
-  width: 100%;
+  width: 80%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
 }
 
 .fetching {
