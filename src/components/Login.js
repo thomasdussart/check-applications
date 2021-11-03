@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
   const handleLogin = () => {
@@ -16,20 +16,21 @@ const Login = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then((res) => {
-        window.location.href = "/";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) => {
+      if (res.status === 200) {
+        window.localStorage.setItem("isLoggedIn", true);
+        window.location.href = "/all-applications";
+      } else {
+        alert("Invalid credentials");
+      }
+    });
   };
   return (
     <div className="loginForm">
       <label>Username</label>
-      <input type="text" name="name" id="name"></input>
+      <input type="text" name="username" id="username"></input>
       <label>Password</label>
-      <input type="password" name="firstname" id="firstname"></input>
+      <input type="password" name="password" id="password"></input>
       <input
         type="submit"
         id="submitForm"
