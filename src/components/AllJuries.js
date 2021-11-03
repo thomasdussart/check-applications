@@ -28,7 +28,7 @@ const AllJuries = () => {
   if (localStorage.getItem("isLoggedIn")) {
     return (
       <div>
-        <h1>All Applications</h1>
+        <h1>All Juries</h1>
         <h2>
           {data.length <= 1
             ? `Il y a ${data.length} jury`

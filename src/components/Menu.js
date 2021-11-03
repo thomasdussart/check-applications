@@ -29,6 +29,11 @@ const Menu = () => {
             Membres du Jury
           </Link>
         </p>
+        <p className="">
+          <Link className="" to={"/getJuriesByCategory"}>
+            Par catégorie
+          </Link>
+        </p>
         <h2>Email</h2>
         <p className="">
           <Link className="" to={"/all-emails"}>

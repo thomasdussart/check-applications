@@ -4,6 +4,7 @@ import Login from "./Login";
 const AddJury = () => {
   const add = () => {
     let categorie = document.getElementById("categories").value;
+    let spec = document.getElementById("spec").value;
     let name = document.getElementById("name").value;
     let firstname = document.getElementById("firstname").value;
     let email = document.getElementById("email").value;
@@ -15,10 +16,9 @@ const AddJury = () => {
 
     const jury = {
       categorie: categorie,
-      //perso
+      spec: spec,
       name: name,
       firstname: firstname,
-      //contact
       email: email,
       phone: phone,
       adress: adress,
@@ -41,7 +41,7 @@ const AddJury = () => {
   if (localStorage.getItem("isLoggedIn")) {
     return (
       <div className="addJury">
-        <select name="" id="categories">
+        <select name="" id="juryCategory">
           <option value="default">Choisissez votre catégorie</option>
           <option value="photo">Photo</option>
           <option value="video">Vidéo</option>
@@ -49,6 +49,8 @@ const AddJury = () => {
           <option value="animation">Animation 3D</option>
           <option value="meme">Meme & GIF</option>
         </select>
+        <label>Spécificité</label>
+        <input type="text" id="spec" placeholder="" />
         <label>Nom</label>
         <input type="text" name="name" id="name"></input>
         <label>Prénom</label>
