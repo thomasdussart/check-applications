@@ -1,4 +1,5 @@
 import { Switch, Route, Link } from "react-router-dom";
+import Drawer from "rc-drawer";
 import AllApplications from "./components/AllApplications";
 import ByCategory from "./components/ByCategory";
 import AllEmail from "./components/AllEmail";

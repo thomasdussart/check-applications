@@ -42,6 +42,11 @@ p a {
   font-size: 1.2rem;
 }
 
+.disconnect {
+  width: 97%;
+  margin: auto;
+}
+
 /* CONTENU */
 
 .notConnected {

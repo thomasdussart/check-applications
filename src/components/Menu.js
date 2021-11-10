@@ -46,7 +46,7 @@ const Menu = () => {
           </Link>
         </p>
         <button
-          className=""
+          className="disconnect"
           onClick={() => {
             localStorage.clear();
             window.location.href = "/";
