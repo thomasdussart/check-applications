@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
-import Login from "./Login";
 
 const AllApplications = () => {
   let [data, setData] = useState([]);
@@ -64,7 +63,14 @@ const AllApplications = () => {
                   Date de création de l'oeuvre: {app.artDate}
                 </li>
                 <li key={data.context}>Contexte: {app.context}</li>
-                <li key={data.link}>Lien de l'oeuvre: {app.link}</li>
+                {app.link ? (
+                  <li key={data.link}>
+                    Lien de l'oeuvre:{" "}
+                    <a href={app.link} target="_blank">
+                      WeTransfer
+                    </a>
+                  </li>
+                ) : null}
               </ul>
             ))}
           </div>
