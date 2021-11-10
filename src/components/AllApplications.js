@@ -57,7 +57,11 @@ const AllApplications = () => {
                 <li key={data.facebookHandle}>
                   Facebook: {app.facebookHandle}
                 </li>
-                <li key={data.website}>Website: {app.website}</li>
+                <li key={data.website}>
+                  <a href={app.website} target="_blank">
+                    Website: {app.website}
+                  </a>
+                </li>
                 <li key={data.title}>Titre de l'oeuvre: {app.title}</li>
                 <li key={data.artDate}>
                   Date de création de l'oeuvre: {app.artDate}
