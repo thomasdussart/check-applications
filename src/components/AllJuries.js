@@ -9,6 +9,23 @@ const AllJuries = () => {
   let facebookURL = "https://www.facebook.com/";
   let linkedinURL = "https://www.linkedin.com/";
 
+  const confirmDelete = (id) => {
+    let isConfirm = window.confirm(
+      "Êtes-vous sûr de vouloir supprimer ce membre du jury?"
+    );
+    if (isConfirm) {
+      handleDelete(id);
+    }
+  };
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:1337/deleteJury/${id}`, {
+      method: "DELETE",
+    }).then((res) => {
+      window.location.reload();
+    });
+  };
+
   useEffect(() => {
     fetch("https://parallaxawards.herokuapp.com/getJury")
       .then((res) => {
@@ -45,6 +62,9 @@ const AllJuries = () => {
           <div className="data">
             {data.map((app) => (
               <ul>
+                <button onClick={() => confirmDelete(app._id)}>
+                  Supprimer
+                </button>
                 <input value={app._id} hidden disabled />
                 <li key={data.categorie}>Catégorie: {app.categorie}</li>
                 <li key={data.name}>Nom: {app.name}</li>

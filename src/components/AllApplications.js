@@ -8,6 +8,23 @@ const AllApplications = () => {
   let instagramURL = "https://www.instagram.com/";
   let facebookURL = "https://www.facebook.com/";
 
+  const confirmDelete = (id) => {
+    let isConfirm = window.confirm(
+      "Êtes-vous sûr de vouloir supprimer cettte candidature?"
+    );
+    if (isConfirm) {
+      handleDelete(id);
+    }
+  };
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:1337/deleteApplication/${id}`, {
+      method: "DELETE",
+    }).then((res) => {
+      window.location.reload();
+    });
+  };
+
   useEffect(() => {
     fetch("https://parallaxawards.herokuapp.com/getAll")
       .then((res) => {
@@ -44,6 +61,9 @@ const AllApplications = () => {
           <div className="data">
             {data.map((app) => (
               <ul>
+                <button onClick={() => confirmDelete(app._id)}>
+                  Supprimer
+                </button>
                 <input value={app._id} hidden disabled />
                 <li key={data.category}>Catégorie: {app.category}</li>
                 <li key={data.name}>Nom: {app.name}</li>
