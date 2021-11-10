@@ -5,6 +5,9 @@ const AllApplications = () => {
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
 
+  let instagramURL = "https://www.instagram.com/";
+  let facebookURL = "https://www.facebook.com/";
+
   useEffect(() => {
     fetch("https://parallaxawards.herokuapp.com/getAll")
       .then((res) => {
@@ -53,9 +56,31 @@ const AllApplications = () => {
                 <li key={data.email}>Email: {app.email}</li>
                 <li key={data.phone}>Téléphone: {app.phone}</li>
                 <li key={data.adress}>Adresse: {app.adress}</li>
-                <li key={data.instaHandle}>Instagram: {app.instaHandle}</li>
+                <li key={data.instaHandle}>
+                  Instagram:{" "}
+                  <a
+                    href={
+                      instagramURL +
+                      app.instaHandle.replace(/[^a-zA-Z0-9_-]/g, "")
+                    }
+                    target="_blank"
+                  >
+                    {app.instaHandle}
+                  </a>
+                </li>
                 <li key={data.facebookHandle}>
-                  Facebook: {app.facebookHandle}
+                  Facebook: {""}
+                  {app.facebookHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={app.facebookHandle} target="_blank">
+                      {app.facebookHandle}
+                    </a>
+                  ) : (
+                    <a href={facebookURL + app.facebookHandle} target="_blank">
+                      {app.facebookHandle}
+                    </a>
+                  )}
                 </li>
                 <li key={data.website}>
                   Website:{" "}
