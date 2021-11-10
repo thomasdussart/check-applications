@@ -19,7 +19,7 @@ const AllJuries = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://parallaxawards.herokuapp.com/deleteJury/${id}`, {
+    fetch(`https://parallaxawards.herokuapp.com/deleteJury/${id}`, {
       method: "DELETE",
     }).then((res) => {
       window.location.reload();
