@@ -44,6 +44,17 @@ p a {
 
 /* CONTENU */
 
+.notConnected {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notConnected button {
+  width: 15%;
+}
+
 div.addJury {
   margin: 1rem;
 }
