@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
-import Login from "./Login";
 
 const AllJuries = () => {
   let [data, setData] = useState([]);
@@ -49,6 +48,9 @@ const AllJuries = () => {
                 <li key={data.email}>Email: {app.email}</li>
                 <li key={data.phone}>Téléphone: {app.phone}</li>
                 <li key={data.adress}>Adresse: {app.adress}</li>
+                <li key={data.linkedinHandle}>
+                  Instagram: {app.linkedinHandle}
+                </li>
                 <li key={data.instaHandle}>Instagram: {app.instaHandle}</li>
                 <li key={data.facebookHandle}>
                   Facebook: {app.facebookHandle}
