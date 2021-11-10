@@ -50,9 +50,9 @@ const AllEmail = () => {
       return (
         <div>
           <h1>All Emails</h1>
-          {/* <button className="modal-toggle" id="email_button" onClick={toggle}>
+          <button className="modal-toggle" id="email_button" onClick={toggle}>
             Send Thanks mail
-          </button> */}
+          </button>
           <Modal isShowing={isShowing} hide={toggle} />
           <div className="fetching">
             <Loading />
@@ -65,9 +65,9 @@ const AllEmail = () => {
       return (
         <div>
           <h1>All Emails</h1>
-          {/* <button className="modal-toggle" id="email_button" onClick={toggle}>
+          <button className="modal-toggle" id="email_button" onClick={toggle}>
             Send Thanks mail
-          </button> */}
+          </button>
 
           <Modal isShowing={isShowing} hide={toggle} />
           <div className="data">
