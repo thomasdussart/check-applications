@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loading from "./Loading";
-import Login from "./Login";
 
 const AllEmailJury = () => {
   let [data, setData] = useState([]);
@@ -45,7 +44,7 @@ const AllEmailJury = () => {
       return (
         <div>
           <h1>All Emails</h1>
-          <button onClick={() => bulkEmail()}>Send Thanks mail</button>
+          {/* <button onClick={() => bulkEmail()}>Send Thanks mail</button> */}
           <div className="fetching">
             <Loading />
           </div>
@@ -57,9 +56,9 @@ const AllEmailJury = () => {
       return (
         <div>
           <h1>All Emails</h1>
-          <button id="email_button" onClick={() => bulkEmail()}>
+          {/* <button id="email_button" onClick={() => bulkEmail()}>
             Send Thanks mail
-          </button>
+          </button> */}
           <div className="data">
             <h2>
               {data.data.length <= 1

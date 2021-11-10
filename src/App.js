@@ -9,7 +9,6 @@ import AddJury from "./components/AddJury";
 import JuryByCategory from "./components/JuryByCategory";
 import AllJuries from "./components/AllJuries";
 import AllEmailJury from "./components/AllEmailJury";
-import Register from "./components/Register";
 
 function App() {
   return (

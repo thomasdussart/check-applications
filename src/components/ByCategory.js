@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Login from "./Login";
 
 const ByCategory = () => {
   let [data, setData] = useState([]);
@@ -10,6 +9,7 @@ const ByCategory = () => {
     const cate = {
       categorie: categorie,
     };
+
     fetch("https://parallaxawards.herokuapp.com/getCategory", {
       method: "POST",
       body: JSON.stringify(cate),

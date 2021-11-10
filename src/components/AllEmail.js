@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loading from "./Loading";
-import Login from "./Login";
+import useModal from "./useModal";
+import Modal from "./ModalEmail";
 
 const AllEmail = () => {
+  let [isShowing, setIsShowing] = useState(false);
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
 
   // your code here
+  const toggle = () => {
+    setIsShowing(!isShowing);
+  };
 
   useEffect(() => {
     axios
@@ -45,7 +50,10 @@ const AllEmail = () => {
       return (
         <div>
           <h1>All Emails</h1>
-          <button onClick={() => bulkEmail()}>Send Thanks mail</button>
+          {/* <button className="modal-toggle" id="email_button" onClick={toggle}>
+            Send Thanks mail
+          </button> */}
+          <Modal isShowing={isShowing} hide={toggle} />
           <div className="fetching">
             <Loading />
           </div>
@@ -57,9 +65,11 @@ const AllEmail = () => {
       return (
         <div>
           <h1>All Emails</h1>
-          <button id="email_button" onClick={() => bulkEmail()}>
+          {/* <button className="modal-toggle" id="email_button" onClick={toggle}>
             Send Thanks mail
-          </button>
+          </button> */}
+
+          <Modal isShowing={isShowing} hide={toggle} />
           <div className="data">
             <h2>
               {data.data.length <= 1

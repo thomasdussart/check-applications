@@ -39,6 +39,7 @@ const AllJuries = () => {
           </div>
         ) : (
           <div className="data">
+            {console.log(data)}
             {data.map((app) => (
               <ul>
                 <input value={app._id} hidden disabled />

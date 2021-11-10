@@ -28,6 +28,8 @@ const AddJury = () => {
       website: website,
     };
 
+    console.log(jury);
+
     fetch("https://parallaxawards.herokuapp.com/addJury", {
       method: "POST",
       body: JSON.stringify(jury),
