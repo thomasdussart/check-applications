@@ -58,8 +58,9 @@ const AllApplications = () => {
                   Facebook: {app.facebookHandle}
                 </li>
                 <li key={data.website}>
+                  Website:{" "}
                   <a href={app.website} target="_blank">
-                    Website: {app.website}
+                    {app.website}
                   </a>
                 </li>
                 <li key={data.title}>Titre de l'oeuvre: {app.title}</li>
