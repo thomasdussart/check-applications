@@ -28,8 +28,7 @@ const AddJury = () => {
       website: website,
     };
 
-    console.log(jury);
-
+    alert("Veuillez patienter pendant l'inscription dans la base de données");
     fetch("https://parallaxawards.herokuapp.com/addJury", {
       method: "POST",
       body: JSON.stringify(jury),
@@ -37,7 +36,7 @@ const AddJury = () => {
         "Content-Type": "application/json",
       },
     }).then((res) => {
-      alert("Succesfully added");
+      window.location.href = "/getJuries";
     });
   };
 
