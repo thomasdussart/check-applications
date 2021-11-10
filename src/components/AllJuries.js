@@ -5,6 +5,10 @@ const AllJuries = () => {
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
 
+  let instagramURL = "https://www.instagram.com/";
+  let facebookURL = "https://www.facebook.com/";
+  let linkedinURL = "https://www.linkedin.com/";
+
   useEffect(() => {
     fetch("https://parallaxawards.herokuapp.com/getJury")
       .then((res) => {
@@ -49,14 +53,53 @@ const AllJuries = () => {
                 <li key={data.email}>Email: {app.email}</li>
                 <li key={data.phone}>Téléphone: {app.phone}</li>
                 <li key={data.adress}>Adresse: {app.adress}</li>
-                <li key={data.linkedinHandle}>
-                  LinkedIn: {app.linkedinHandle}
+                <li key={data.instaHandle}>
+                  Instagram:{" "}
+                  <a
+                    href={
+                      instagramURL +
+                      app.instaHandle.replace(/[^a-zA-Z0-9_-]/g, "")
+                    }
+                    target="_blank"
+                  >
+                    {app.instaHandle}
+                  </a>
                 </li>
-                <li key={data.instaHandle}>Instagram: {app.instaHandle}</li>
                 <li key={data.facebookHandle}>
-                  Facebook: {app.facebookHandle}
+                  Facebook: {""}
+                  {app.facebookHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={app.facebookHandle} target="_blank">
+                      {app.facebookHandle}
+                    </a>
+                  ) : (
+                    <a href={facebookURL + app.facebookHandle} target="_blank">
+                      {app.facebookHandle}
+                    </a>
+                  )}
                 </li>
-                <li key={data.website}>Website: {app.website}</li>
+                <li key={data.linkedinHandle}>
+                  LinkedIn: {""}
+                  {app.linkedinHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={app.linkedinHandle} target="_blank">
+                      {app.linkedinHandle}
+                    </a>
+                  ) : (
+                    <a href={linkedinURL + app.linkedinHandle} target="_blank">
+                      {app.linkedinHandle}
+                    </a>
+                  )}
+                </li>
+
+                <li key={data.website}>
+                  Website:{" "}
+                  <a href={app.website} target="_blank">
+                    {app.website}
+                  </a>
+                </li>
               </ul>
             ))}
           </div>
