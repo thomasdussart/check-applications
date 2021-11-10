@@ -4,6 +4,9 @@ const ByCategory = () => {
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
 
+  let instagramURL = "https://www.instagram.com/";
+  let facebookURL = "https://www.facebook.com/";
+
   const fetchByCategory = () => {
     let categorie = document.getElementById("categories").value;
     const cate = {
@@ -87,17 +90,51 @@ const ByCategory = () => {
                 <li key={data.email}>Email: {cat.email}</li>
                 <li key={data.phone}>Téléphone: {cat.phone}</li>
                 <li key={data.adress}>Adresse: {cat.adress}</li>
-                <li key={data.instaHandle}>Instagram: {cat.instaHandle}</li>
-                <li key={data.facebookHandle}>
-                  Facebook: {cat.facebookHandle}
+                <li key={data.instaHandle}>
+                  Instagram:{" "}
+                  <a
+                    href={
+                      instagramURL +
+                      cat.instaHandle.replace(/[^a-zA-Z0-9_-]/g, "")
+                    }
+                    target="_blank"
+                  >
+                    {cat.instaHandle}
+                  </a>
                 </li>
-                <li key={data.website}>Website: {cat.website}</li>
+                <li key={data.facebookHandle}>
+                  Facebook: {""}
+                  {cat.facebookHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={cat.facebookHandle} target="_blank">
+                      {cat.facebookHandle}
+                    </a>
+                  ) : (
+                    <a href={facebookURL + cat.facebookHandle} target="_blank">
+                      {cat.facebookHandle}
+                    </a>
+                  )}
+                </li>
+                <li key={data.website}>
+                  Website:{" "}
+                  <a href={cat.website} target="_blank">
+                    {cat.website}
+                  </a>
+                </li>
                 <li key={data.title}>Titre de l'oeuvre: {cat.title}</li>
                 <li key={data.artDate}>
                   Date de création de l'oeuvre: {cat.artDate}
                 </li>
                 <li key={data.context}>Contexte: {cat.context}</li>
-                <li key={data.link}>Lien de l'oeuvre: {cat.link}</li>
+                {cat.link ? (
+                  <li key={data.link}>
+                    Lien de l'oeuvre:{" "}
+                    <a href={cat.link} target="_blank">
+                      WeTransfer
+                    </a>
+                  </li>
+                ) : null}
               </ul>
             ))}
           </div>
