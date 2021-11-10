@@ -18,7 +18,7 @@ const AllApplications = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:1337/deleteApplication/${id}`, {
+    fetch(`https://parallaxawards.herokuapp.com/deleteApplication/${id}`, {
       method: "DELETE",
     }).then((res) => {
       window.location.reload();
