@@ -1,5 +1,4 @@
 import React from "react";
-import Login from "./Login";
 
 const AddJury = () => {
   const add = () => {
@@ -10,6 +9,7 @@ const AddJury = () => {
     let email = document.getElementById("email").value;
     let phone = document.getElementById("phone").value;
     let adress = document.getElementById("adress").value;
+    let linkedinHandle = document.getElementById("linkedinHandle").value;
     let instaHandle = document.getElementById("instaHandle").value;
     let facebookHandle = document.getElementById("facebookHandle").value;
     let website = document.getElementById("website").value;
@@ -22,6 +22,7 @@ const AddJury = () => {
       email: email,
       phone: phone,
       adress: adress,
+      linkedinHandle: linkedinHandle,
       instaHandle: instaHandle,
       facebookHandle: facebookHandle,
       website: website,
@@ -61,6 +62,13 @@ const AddJury = () => {
         <input type="text" name="phone" id="phone"></input>
         <label>Adress</label>
         <input type="text" name="adress" id="adress"></input>
+        <label>LinkedIn (facultatif)</label>
+        <input
+          type="text"
+          name="linkedinHandle"
+          id="linkedinHandle"
+          placeholder="parallax_awards"
+        />
         <label>Instagram (facultatif)</label>
         <input
           type="text"
