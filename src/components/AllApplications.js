@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const AllApplications = () => {
   let [data, setData] = useState([]);
@@ -61,8 +63,11 @@ const AllApplications = () => {
           <div className="data">
             {data.map((app) => (
               <ul>
-                <button onClick={() => confirmDelete(app._id)}>
-                  Supprimer
+                <button
+                  className="deleteButton"
+                  onClick={() => confirmDelete(app._id)}
+                >
+                  <FontAwesomeIcon icon={faTrashAlt} className="delete" />
                 </button>
                 <input value={app._id} hidden disabled />
                 <li key={data.category}>Catégorie: {app.category}</li>

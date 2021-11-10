@@ -65,8 +65,18 @@ div.addJury {
 }
 
 .App-content {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
+}
+
+.deleteButton {
+  float: right;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.delete {
+  color: red;
 }
 
 li a {
