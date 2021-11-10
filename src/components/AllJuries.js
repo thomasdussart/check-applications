@@ -49,7 +49,7 @@ const AllJuries = () => {
                 <li key={data.phone}>Téléphone: {app.phone}</li>
                 <li key={data.adress}>Adresse: {app.adress}</li>
                 <li key={data.linkedinHandle}>
-                  Instagram: {app.linkedinHandle}
+                  LinkedIn: {app.linkedinHandle}
                 </li>
                 <li key={data.instaHandle}>Instagram: {app.instaHandle}</li>
                 <li key={data.facebookHandle}>
