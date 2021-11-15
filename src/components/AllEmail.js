@@ -19,7 +19,6 @@ const AllEmail = () => {
       .get("https://parallaxawards.herokuapp.com/getEmail")
       .then((app) => {
         setData(app);
-        console.log(app);
       })
       .catch((error) => {
         console.error("Error fetching data :", error);
@@ -35,7 +34,6 @@ const AllEmail = () => {
       const data = {
         mail: mail.textContent,
       };
-      console.log(mail.textContent);
       fetch("https://parallaxawards.herokuapp.com/bulkEmail", {
         method: "POST",
         body: JSON.stringify(data),

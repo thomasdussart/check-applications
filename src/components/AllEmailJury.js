@@ -28,7 +28,6 @@ const AllEmailJury = () => {
       const data = {
         mail: mail.textContent,
       };
-      console.log(mail.textContent);
       fetch("https://parallaxawards.herokuapp.com/bulkEmailJury", {
         method: "POST",
         body: JSON.stringify(data),
