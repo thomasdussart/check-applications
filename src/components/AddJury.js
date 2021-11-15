@@ -27,7 +27,6 @@ const AddJury = () => {
     let website = document.getElementById("website").value;
 
     const jury = {
-      photo: file,
       categorie: categorie,
       spec: spec,
       name: name,
