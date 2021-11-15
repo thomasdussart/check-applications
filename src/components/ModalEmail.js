@@ -2,13 +2,17 @@ import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import EditorJs from "react-editor-js";
 import { EDITOR_JS_TOOLS } from "./Tools";
+const edjsHTML = require("editorjs-html");
 
 const Modal = ({ isShowing, hide }) => {
   const instanceRef = useRef(null);
 
   async function handleSave() {
     const savedData = await instanceRef.current.save();
-    console.log(savedData);
+    const edjsParser = edjsHTML();
+    const html = edjsParser.parse(savedData);
+
+    console.log(html);
   }
 
   if (isShowing) {
