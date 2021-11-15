@@ -72,7 +72,7 @@ const AllJuries = () => {
                 </button>
                 <input value={app._id} hidden disabled />
                 <li key={data.categorie}>Catégorie: {app.categorie}</li>
-                <li key={data.categorie}>Catégorie: {app.specialite}</li>
+                <li key={data.specialite}>Spécialité: {app.specialite}</li>
                 <li key={data.name}>Nom: {app.name}</li>
                 <li key={data.firstname}>Prénom: {app.firstname}</li>
                 <li key={data.email}>Email: {app.email}</li>
