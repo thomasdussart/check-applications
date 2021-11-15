@@ -13,7 +13,7 @@ const AddJury = () => {
   };
 
   const add = async () => {
-    // document.getElementById("submitForm").setAttribute("disabled", "disabled");
+    document.getElementById("submitForm").setAttribute("disabled", "disabled");
     let categorie = document.getElementById("juryCategory").value;
     let spec = document.getElementById("spec").value;
     let name = document.getElementById("name").value;
@@ -40,22 +40,23 @@ const AddJury = () => {
       facebookHandle: facebookHandle,
       website: website,
     };
-    // await toast.promise(
-    //   fetch("https://parallaxawards.herokuapp.com/addJury", {
-    //     method: "POST",
-    //     body: JSON.stringify(jury),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }).then((res) => {
-    //     window.location.href = "/getJuries";
-    //   }),
-    //   {
-    //     pending: "Ajout d'un jury en cours",
-    //     success: "Jury ajouté 👌",
-    //     error: "Oops, il y a eu une erreur 🤯",
-    //   }
-    // );
+
+    await toast.promise(
+      fetch("https://parallaxawards.herokuapp.com/addJury", {
+        method: "POST",
+        body: JSON.stringify(jury),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        window.location.href = "/getJuries";
+      }),
+      {
+        pending: "Ajout d'un jury en cours",
+        success: "Jury ajouté 👌",
+        error: "Oops, il y a eu une erreur 🤯",
+      }
+    );
   };
 
   if (localStorage.getItem("isLoggedIn")) {
