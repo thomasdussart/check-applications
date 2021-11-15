@@ -16,9 +16,10 @@ const AllEmail = () => {
 
   useEffect(() => {
     axios
-      .get("https://parallaxawards.herokuapp.com/getAll")
+      .get("http://localhost:1337/getEmail")
       .then((app) => {
         setData(app);
+        console.log(app);
       })
       .catch((error) => {
         console.error("Error fetching data :", error);
@@ -79,7 +80,7 @@ const AllEmail = () => {
             {data.data.map((app) => (
               <ul>
                 <li className="mail" key={data.data.email}>
-                  {app.email}
+                  {app}
                 </li>
               </ul>
             ))}
