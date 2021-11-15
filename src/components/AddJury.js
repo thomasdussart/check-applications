@@ -45,6 +45,7 @@ const AddJury = () => {
         body: JSON.stringify(jury),
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       }).then((res) => {
         window.location.href = "/getJuries";
