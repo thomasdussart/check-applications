@@ -13,6 +13,7 @@ const AddJury = () => {
   };
 
   const add = async () => {
+    document.getElementById("submitForm").setAttribute("disabled", "disabled");
     let categorie = document.getElementById("juryCategory").value;
     let spec = document.getElementById("spec").value;
     let name = document.getElementById("name").value;
