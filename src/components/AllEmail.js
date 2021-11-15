@@ -16,7 +16,7 @@ const AllEmail = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1337/getEmail")
+      .get("https://parallaxawards.herokuapp.com/getEmail")
       .then((app) => {
         setData(app);
         console.log(app);
