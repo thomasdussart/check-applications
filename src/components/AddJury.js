@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddJury = () => {
-  const add = () => {
+  const [file, setFile] = useState(null);
+
+  const onChangeHandler = (event) => {
+    const data = event.target.files[0];
+    setFile(data);
+
+    console.log(file);
+  };
+
+  const add = async () => {
     let categorie = document.getElementById("juryCategory").value;
     let spec = document.getElementById("spec").value;
     let name = document.getElementById("name").value;
@@ -15,6 +26,7 @@ const AddJury = () => {
     let website = document.getElementById("website").value;
 
     const jury = {
+      photo: file,
       categorie: categorie,
       spec: spec,
       name: name,
@@ -27,22 +39,30 @@ const AddJury = () => {
       facebookHandle: facebookHandle,
       website: website,
     };
-
-    alert("Veuillez patienter pendant l'inscription dans la base de données");
-    fetch("https://parallaxawards.herokuapp.com/addJury", {
-      method: "POST",
-      body: JSON.stringify(jury),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => {
-      window.location.href = "/getJuries";
-    });
+    await toast.promise(
+      fetch("https://parallaxawards.herokuapp.com/addJury", {
+        method: "POST",
+        body: JSON.stringify(jury),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        window.location.href = "/getJuries";
+      }),
+      {
+        pending: "Ajout d'un jury en cours",
+        success: "Jury ajouté 👌",
+        error: "Oops, il y a eu une erreur 🤯",
+      }
+    );
   };
 
   if (localStorage.getItem("isLoggedIn")) {
     return (
       <div className="addJury">
+        <label>Photo</label>
+        <input type="file" name="file" onChange={onChangeHandler} />
+        <label>Catégorie</label>
         <select name="" id="juryCategory">
           <option value="default">Choisissez votre catégorie</option>
           <option value="photo">Photo</option>
@@ -97,6 +117,7 @@ const AddJury = () => {
           onClick={() => add()}
           value="Enregistrer"
         ></input>
+        <ToastContainer />
       </div>
     );
   } else {
