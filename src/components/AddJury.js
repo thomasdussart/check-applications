@@ -24,6 +24,7 @@ const AddJury = () => {
     let linkedinHandle = document.getElementById("linkedinHandle").value;
     let instaHandle = document.getElementById("instaHandle").value;
     let facebookHandle = document.getElementById("facebookHandle").value;
+    let youtubeHandle = document.getElementById("youtubeHandle").value;
     let website = document.getElementById("website").value;
 
     const jury = {
@@ -37,6 +38,7 @@ const AddJury = () => {
       linkedinHandle: linkedinHandle,
       instaHandle: instaHandle,
       facebookHandle: facebookHandle,
+      youtubeHandle: youtubeHandle,
       website: website,
     };
 
@@ -103,6 +105,13 @@ const AddJury = () => {
           type="text"
           name="facebookHandle"
           id="facebookHandle"
+          placeholder="parallax_awards"
+        />
+        <label>Youtube (facultatif)</label>
+        <input
+          type="text"
+          name="youtubeHandle"
+          id="youtubeHandle"
           placeholder="parallax_awards"
         />
         <label>Site web (facultatif)</label>

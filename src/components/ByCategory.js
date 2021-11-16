@@ -78,31 +78,37 @@ const ByCategory = () => {
                 : `${data.data.length} candidatures dans la catégorie`}
             </h2>
             {data.data.map((cat) => (
-              <ul>
-                <li key={data.category}>Catégorie: {cat.category}</li>
-                <li key={data.name}>Nom: {cat.name}</li>
-                <li key={data.firstname}>Prénom: {cat.firstname}</li>
-                <li key={data.birthdate}>Date de naissance: {cat.birthdate}</li>
-                <li key={data.birthLocation}>
-                  Lieu de naissance: {cat.birthLocation}
+              <ul key={cat._id}>
+                <li>Catégorie: {cat.category}</li>
+                <li>Nom: {cat.name}</li>
+                <li>Prénom: {cat.firstname}</li>
+                <li>Date de naissance: {cat.birthdate}</li>
+                <li>Lieu de naissance: {cat.birthLocation}</li>
+                <li>Nationalité: {cat.nationality}</li>
+                <li>Email: {cat.email}</li>
+                <li>Téléphone: {cat.phone}</li>
+                <li>Adresse: {cat.adress}</li>
+                <li>
+                  Instagram: {""}
+                  {cat.instaHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={cat.instaHandle} target="_blank">
+                      {cat.instaHandle}
+                    </a>
+                  ) : (
+                    <a
+                      href={
+                        instagramURL +
+                        cat.instaHandle.replace(/[^a-zA-Z0-9_-]/g, "")
+                      }
+                      target="_blank"
+                    >
+                      {cat.instaHandle}
+                    </a>
+                  )}
                 </li>
-                <li key={data.nationality}>Nationalité: {cat.nationality}</li>
-                <li key={data.email}>Email: {cat.email}</li>
-                <li key={data.phone}>Téléphone: {cat.phone}</li>
-                <li key={data.adress}>Adresse: {cat.adress}</li>
-                <li key={data.instaHandle}>
-                  Instagram:{" "}
-                  <a
-                    href={
-                      instagramURL +
-                      cat.instaHandle.replace(/[^a-zA-Z0-9_-]/g, "")
-                    }
-                    target="_blank"
-                  >
-                    {cat.instaHandle}
-                  </a>
-                </li>
-                <li key={data.facebookHandle}>
+                <li>
                   Facebook: {""}
                   {cat.facebookHandle.match(
                     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
@@ -111,24 +117,28 @@ const ByCategory = () => {
                       {cat.facebookHandle}
                     </a>
                   ) : (
-                    <a href={facebookURL + cat.facebookHandle} target="_blank">
+                    <a
+                      href={
+                        facebookURL +
+                        cat.facebookHandle.replace(/[^a-zA-Z0-9_-]/g, "")
+                      }
+                      target="_blank"
+                    >
                       {cat.facebookHandle}
                     </a>
                   )}
                 </li>
-                <li key={data.website}>
+                <li>
                   Website:{" "}
                   <a href={cat.website} target="_blank">
                     {cat.website}
                   </a>
                 </li>
-                <li key={data.title}>Titre de l'oeuvre: {cat.title}</li>
-                <li key={data.artDate}>
-                  Date de création de l'oeuvre: {cat.artDate}
-                </li>
-                <li key={data.context}>Contexte: {cat.context}</li>
+                <li>Titre de l'oeuvre: {cat.title}</li>
+                <li>Date de création de l'oeuvre: {cat.artDate}</li>
+                <li>Contexte: {cat.context}</li>
                 {cat.link ? (
-                  <li key={data.link}>
+                  <li>
                     Lien de l'oeuvre:{" "}
                     <a href={cat.link} target="_blank">
                       WeTransfer

@@ -1,8 +1,16 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPenAlt } from "@fortawesome/free-solid-svg-icons";
 
 const JuryByCategory = () => {
   let [data, setData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
+  let [isEditing, setisEditing] = useState(false);
+
+  let instagramURL = "https://www.instagram.com/";
+  let facebookURL = "https://www.facebook.com/";
+  let linkedinURL = "https://www.linkedin.com/";
 
   const fetchByCategory = () => {
     let categorie = document.getElementById("categories").value;
@@ -31,6 +39,23 @@ const JuryByCategory = () => {
       .finally((fin) => {
         setisLoading(false);
       });
+  };
+
+  const confirmDelete = (id) => {
+    let isConfirm = window.confirm(
+      "Êtes-vous sûr de vouloir supprimer ce membre du jury?"
+    );
+    if (isConfirm) {
+      handleDelete(id);
+    }
+  };
+
+  const handleDelete = (id) => {
+    fetch(`https://parallaxawards.herokuapp.com/deleteJury/${id}`, {
+      method: "DELETE",
+    }).then((res) => {
+      window.location.reload();
+    });
   };
 
   if (localStorage.getItem("isLoggedIn")) {
@@ -74,29 +99,127 @@ const JuryByCategory = () => {
                 : `${data.data.length} candidatures dans la catégorie`}
             </h2>
             {data.data.map((cat) => (
-              <ul>
-                <li key={data.category}>Catégorie: {cat.category}</li>
-                <li key={data.name}>Nom: {cat.name}</li>
-                <li key={data.firstname}>Prénom: {cat.firstname}</li>
-                <li key={data.birthdate}>Date de naissance: {cat.birthdate}</li>
-                <li key={data.birthLocation}>
-                  Lieu de naissance: {cat.birthLocation}
+              <ul key={cat._id}>
+                <button
+                  className="deleteButton"
+                  onClick={() => confirmDelete(cat._id)}
+                >
+                  <FontAwesomeIcon icon={faTrashAlt} className="delete" />
+                </button>
+                <input value={cat._id} hidden disabled />
+                <li>
+                  Catégorie: <span id="cat">{cat.categorie}</span>{" "}
+                  {isEditing ? (
+                    <input type="submit" value="Modifier" />
+                  ) : (
+                    <button className="editButton">
+                      <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                    </button>
+                  )}
                 </li>
-                <li key={data.nationality}>Nationalité: {cat.nationality}</li>
-                <li key={data.email}>Email: {cat.email}</li>
-                <li key={data.phone}>Téléphone: {cat.phone}</li>
-                <li key={data.adress}>Adresse: {cat.adress}</li>
-                <li key={data.instaHandle}>Instagram: {cat.instaHandle}</li>
-                <li key={data.facebookHandle}>
-                  Facebook: {cat.facebookHandle}
+                <li>
+                  Specialité: {cat.specialite}
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
                 </li>
-                <li key={data.website}>Website: {cat.website}</li>
-                <li key={data.title}>Titre de l'oeuvre: {cat.title}</li>
-                <li key={data.artDate}>
-                  Date de création de l'oeuvre: {cat.artDate}
+                <li>
+                  Nom: {cat.name}
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
                 </li>
-                <li key={data.context}>Contexte: {cat.context}</li>
-                <li key={data.link}>Lien de l'oeuvre: {cat.link}</li>
+                <li>
+                  Prénom: {cat.firstname}
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Email: {cat.email}
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Téléphone: {cat.phone}
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Adresse: {cat.adress}
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Instagram: {""}
+                  {cat.instaHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={cat.instaHandle} target="_blank">
+                      {cat.instaHandle}
+                    </a>
+                  ) : (
+                    <a
+                      href={
+                        instagramURL +
+                        cat.instaHandle.replace(/[^a-zA-Z0-9_-]/g, "")
+                      }
+                      target="_blank"
+                    >
+                      {cat.instaHandle}
+                    </a>
+                  )}
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Facebook: {""}
+                  {cat.facebookHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={cat.facebookHandle} target="_blank">
+                      {cat.facebookHandle}
+                    </a>
+                  ) : (
+                    <a href={facebookURL + cat.facebookHandle} target="_blank">
+                      {cat.facebookHandle}
+                    </a>
+                  )}
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  LinkedIn: {""}
+                  {cat.linkedinHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={cat.linkedinHandle} target="_blank">
+                      {cat.linkedinHandle}
+                    </a>
+                  ) : (
+                    <a href={linkedinURL + cat.linkedinHandle} target="_blank">
+                      {cat.linkedinHandle}
+                    </a>
+                  )}
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+
+                <li>
+                  Website:{" "}
+                  <a href={cat.website} target="_blank">
+                    {cat.website}
+                  </a>
+                  <button className="editButton">
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
               </ul>
             ))}
           </div>

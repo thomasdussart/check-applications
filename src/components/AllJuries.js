@@ -2,14 +2,30 @@ import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPenAlt } from "@fortawesome/free-solid-svg-icons";
 
 const AllJuries = () => {
   let [data, setData] = useState([]);
+  let [id, setId] = useState(0);
   let [isLoading, setisLoading] = useState(true);
+  let [isEditing, setisEditing] = useState(false);
 
+  let youtubeURL = "https://www.youtube.com/channel/";
   let instagramURL = "https://www.instagram.com/";
   let facebookURL = "https://www.facebook.com/";
   let linkedinURL = "https://www.linkedin.com/";
+
+  const handleChange = () => {
+    setisEditing(true);
+    let span = document.getElementById("cat");
+    span.setAttribute("contenteditable", "true");
+  };
+
+  const handleModify = () => {
+    setisEditing(false);
+    let newData = document.getElementById("cat").textContent;
+    console.log(newData);
+  };
 
   const confirmDelete = (id) => {
     let isConfirm = window.confirm(
@@ -63,7 +79,7 @@ const AllJuries = () => {
         ) : (
           <div className="data">
             {data.map((app) => (
-              <ul>
+              <ul key={app._id}>
                 <button
                   className="deleteButton"
                   onClick={() => confirmDelete(app._id)}
@@ -71,26 +87,94 @@ const AllJuries = () => {
                   <FontAwesomeIcon icon={faTrashAlt} className="delete" />
                 </button>
                 <input value={app._id} hidden disabled />
-                <li key={data.categorie}>Catégorie: {app.categorie}</li>
-                <li key={data.specialite}>Specialité: {app.specialite}</li>
-                <li key={data.name}>Nom: {app.name}</li>
-                <li key={data.firstname}>Prénom: {app.firstname}</li>
-                <li key={data.email}>Email: {app.email}</li>
-                <li key={data.phone}>Téléphone: {app.phone}</li>
-                <li key={data.adress}>Adresse: {app.adress}</li>
-                <li key={data.instaHandle}>
-                  Instagram:{" "}
-                  <a
-                    href={
-                      instagramURL +
-                      app.instaHandle.replace(/[^a-zA-Z0-9_-]/g, "")
-                    }
-                    target="_blank"
-                  >
-                    {app.instaHandle}
-                  </a>
+                <li>
+                  Catégorie: <span id="cat">{app.categorie}</span>{" "}
+                  {isEditing ? (
+                    <input
+                      type="submit"
+                      value="Modifier"
+                      onClick={() => handleModify()}
+                    />
+                  ) : (
+                    <button
+                      className="editButton"
+                      onClick={() => handleChange()}
+                    >
+                      <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                    </button>
+                  )}
                 </li>
-                <li key={data.facebookHandle}>
+                <li>
+                  Specialité: {app.specialite}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Nom: {app.name}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Prénom: {app.firstname}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Email: {app.email}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Téléphone: {app.phone}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Adresse: {app.adress}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Youtube: {""}
+                  {app.youtubeHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={app.youtubeHandle} target="_blank">
+                      {app.youtbeHandle}
+                    </a>
+                  ) : (
+                    <a href={youtubeURL + app.youtubeHandle} target="_blank">
+                      {app.youtubeHandle}
+                    </a>
+                  )}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
+                  Instagram: {""}
+                  {app.instaHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={app.instaHandle} target="_blank">
+                      {app.instaHandle}
+                    </a>
+                  ) : (
+                    <a href={instagramURL + app.instaHandle} target="_blank">
+                      {app.instaHandle}
+                    </a>
+                  )}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
+                </li>
+                <li>
                   Facebook: {""}
                   {app.facebookHandle.match(
                     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
@@ -99,12 +183,21 @@ const AllJuries = () => {
                       {app.facebookHandle}
                     </a>
                   ) : (
-                    <a href={facebookURL + app.facebookHandle} target="_blank">
+                    <a
+                      href={
+                        facebookURL +
+                        app.facebookHandle.replace(/[^a-zA-Z0-9_-]/g, "")
+                      }
+                      target="_blank"
+                    >
                       {app.facebookHandle}
                     </a>
                   )}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
                 </li>
-                <li key={data.linkedinHandle}>
+                <li>
                   LinkedIn: {""}
                   {app.linkedinHandle.match(
                     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
@@ -117,13 +210,19 @@ const AllJuries = () => {
                       {app.linkedinHandle}
                     </a>
                   )}
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
                 </li>
 
-                <li key={data.website}>
+                <li>
                   Website:{" "}
                   <a href={app.website} target="_blank">
                     {app.website}
                   </a>
+                  <button className="editButton" onClick={() => handleChange()}>
+                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
+                  </button>
                 </li>
               </ul>
             ))}

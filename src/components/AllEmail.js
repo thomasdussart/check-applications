@@ -76,10 +76,8 @@ const AllEmail = () => {
                 : `Il y a ${data.data.length} adresses email`}
             </h2>
             {data.data.map((app) => (
-              <ul>
-                <li className="mail" key={data.data.email}>
-                  {app}
-                </li>
+              <ul key={app}>
+                <li className="mail">{app}</li>
               </ul>
             ))}
           </div>

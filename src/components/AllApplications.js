@@ -52,8 +52,8 @@ const AllApplications = () => {
         <h1>All Applications</h1>
         <h2>
           {data.length <= 1
-            ? `Il y a ${data.length} candidature`
-            : `Il y a ${data.length} candidatures`}
+            ? `Il y a ${data.length} oeuvre`
+            : `Il y a ${data.length} oeuvres`}
         </h2>
         {isLoading ? (
           <div className="fetching">
@@ -62,38 +62,38 @@ const AllApplications = () => {
         ) : (
           <div className="data">
             {data.map((app) => (
-              <ul>
-                <button
-                  className="deleteButton"
-                  onClick={() => confirmDelete(app._id)}
-                >
-                  <FontAwesomeIcon icon={faTrashAlt} className="delete" />
-                </button>
+              <ul key={app._id}>
                 <input value={app._id} hidden disabled />
-                <li key={data.category}>Catégorie: {app.category}</li>
-                <li key={data.name}>Nom: {app.name}</li>
-                <li key={data.firstname}>Prénom: {app.firstname}</li>
-                <li key={data.birthdate}>Date de naissance: {app.birthdate}</li>
-                <li key={data.birthLocation}>
-                  Lieu de naissance: {app.birthLocation}
+                <li>Catégorie: {app.category}</li>
+                <li>Nom: {app.name}</li>
+                <li>Prénom: {app.firstname}</li>
+                <li>Date de naissance: {app.birthdate}</li>
+                <li>Lieu de naissance: {app.birthLocation}</li>
+                <li>Nationalité: {app.nationality}</li>
+                <li>Email: {app.email}</li>
+                <li>Téléphone: {app.phone}</li>
+                <li>Adresse: {app.adress}</li>
+                <li>
+                  Instagram: {""}
+                  {app.instaHandle.match(
+                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
+                  ) ? (
+                    <a href={app.instaHandle} target="_blank">
+                      {app.instaHandle}
+                    </a>
+                  ) : (
+                    <a
+                      href={
+                        instagramURL +
+                        app.instaHandle.replace(/[^a-zA-Z0-9_-]/g, "")
+                      }
+                      target="_blank"
+                    >
+                      {app.instaHandle}
+                    </a>
+                  )}
                 </li>
-                <li key={data.nationality}>Nationalité: {app.nationality}</li>
-                <li key={data.email}>Email: {app.email}</li>
-                <li key={data.phone}>Téléphone: {app.phone}</li>
-                <li key={data.adress}>Adresse: {app.adress}</li>
-                <li key={data.instaHandle}>
-                  Instagram:{" "}
-                  <a
-                    href={
-                      instagramURL +
-                      app.instaHandle.replace(/[^a-zA-Z0-9_-]/g, "")
-                    }
-                    target="_blank"
-                  >
-                    {app.instaHandle}
-                  </a>
-                </li>
-                <li key={data.facebookHandle}>
+                <li>
                   Facebook: {""}
                   {app.facebookHandle.match(
                     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
@@ -102,24 +102,28 @@ const AllApplications = () => {
                       {app.facebookHandle}
                     </a>
                   ) : (
-                    <a href={facebookURL + app.facebookHandle} target="_blank">
+                    <a
+                      href={
+                        facebookURL +
+                        app.facebookHandle.replace(/[^a-zA-Z0-9_-]/g, "")
+                      }
+                      target="_blank"
+                    >
                       {app.facebookHandle}
                     </a>
                   )}
                 </li>
-                <li key={data.website}>
+                <li>
                   Website:{" "}
                   <a href={app.website} target="_blank">
                     {app.website}
                   </a>
                 </li>
-                <li key={data.title}>Titre de l'oeuvre: {app.title}</li>
-                <li key={data.artDate}>
-                  Date de création de l'oeuvre: {app.artDate}
-                </li>
-                <li key={data.context}>Contexte: {app.context}</li>
+                <li>Titre de l'oeuvre: {app.title}</li>
+                <li>Date de création de l'oeuvre: {app.artDate}</li>
+                <li>Contexte: {app.context}</li>
                 {app.link ? (
-                  <li key={data.link}>
+                  <li>
                     Lien de l'oeuvre:{" "}
                     <a href={app.link} target="_blank">
                       WeTransfer

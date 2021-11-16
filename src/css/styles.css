@@ -70,9 +70,9 @@ div.addJury {
 }
 
 .deleteButton {
-  float: right;
   background-color: rgba(0, 0, 0, 0);
   border: none;
+  cursor: pointer;
 }
 
 .delete {
@@ -83,6 +83,17 @@ li a {
   color: red;
   text-decoration: none;
   text-align: center;
+}
+
+.editButton {
+  float: right;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+}
+
+.edit {
+  color: #aca5cf;
 }
 
 .fetching {
