@@ -51,8 +51,8 @@ const AddJury = () => {
         window.location.href = "/getJuries";
       }),
       {
-        pending: "Ajout d'un jury en cours",
-        success: "Jury ajouté 👌",
+        pending: "Ajout en cours",
+        success: "Ajouté 👌",
         error: "Oops, il y a eu une erreur 🤯",
       }
     );
