@@ -13,10 +13,7 @@ import EasyEdit from "react-easy-edit";
 
 const AllJuries = () => {
   let [data, setData] = useState([]);
-  let [id, setId] = useState(0);
-  let [index, setIndex] = useState(0);
   let [isLoading, setisLoading] = useState(true);
-  let [isEditing, setisEditing] = useState(false);
 
   let youtubeURL = "https://www.youtube.com/channel/";
   let instagramURL = "https://www.instagram.com/";
@@ -33,8 +30,6 @@ const AllJuries = () => {
       text: value,
       id: id,
     };
-
-    console.log(data);
 
     await toast.promise(
       fetch("https://parallaxawards.herokuapp.com/modifyJury", {
@@ -128,7 +123,7 @@ const AllJuries = () => {
                     attributes={{ name: "awesome-input", id: 1 }}
                   />
                 </li>
-                <li>
+                <li className="specialite">
                   Spécialité: {app.specialite}{" "}
                   <EasyEdit
                     className="easy-edit"
@@ -185,7 +180,32 @@ const AllJuries = () => {
                   />
                 </li>
                 <li>
+                  Adresse:{app.adress}{" "}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="text"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[8])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
+                </li>
+                <li>
                   Youtube: {""}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="textarea"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[14])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
                   {app.youtubeHandle.match(
                     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
                   ) ? (
@@ -200,6 +220,17 @@ const AllJuries = () => {
                 </li>
                 <li>
                   Instagram: {""}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="textarea"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[10])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
                   {app.instaHandle.match(
                     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
                   ) ? (
@@ -214,6 +245,17 @@ const AllJuries = () => {
                 </li>
                 <li>
                   Facebook: {""}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="textarea"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[11])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
                   {app.facebookHandle.match(
                     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
                   ) ? (
@@ -234,6 +276,17 @@ const AllJuries = () => {
                 </li>
                 <li>
                   LinkedIn: {""}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="textarea"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[9])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
                   {app.linkedinHandle.match(
                     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
                   ) ? (
@@ -249,9 +302,26 @@ const AllJuries = () => {
 
                 <li>
                   Website:{" "}
-                  <a href={app.website} target="_blank">
-                    {app.website}
-                  </a>
+                  <EasyEdit
+                    className="easy-edit"
+                    type="textarea"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[12])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
+                  {app.website.match(/https?:\/\//g) ? (
+                    <a href={app.website} target="_blank">
+                      {app.website}
+                    </a>
+                  ) : (
+                    <a href={"https://" + app.website} target="_blank">
+                      {"https://" + app.website}
+                    </a>
+                  )}
                 </li>
               </ul>
             ))}

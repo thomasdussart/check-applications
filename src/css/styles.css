@@ -87,18 +87,12 @@ li a {
 
 .easy-edit-wrapper {
   float: right;
+  color: #00a1f1;
 }
 
 .easy-edit-textarea {
   width: 30rem;
   height: 15rem;
-}
-
-.editButton {
-  float: right;
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  cursor: pointer;
 }
 
 .edit {
