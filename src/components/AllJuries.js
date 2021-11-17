@@ -31,7 +31,7 @@ const AllJuries = () => {
       id: id,
     };
 
-    await toast.promise(
+    https: await toast.promise(
       fetch("https://parallaxawards.herokuapp.com/modifyJury", {
         method: "PUT",
         body: JSON.stringify(data),
@@ -102,7 +102,6 @@ const AllJuries = () => {
           <div className="data">
             {data.map((app) => (
               <ul key={app._id}>
-                {console.log(Object.keys(app))}
                 <button
                   className="deleteButton"
                   onClick={() => confirmDelete(app._id)}
