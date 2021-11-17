@@ -31,7 +31,7 @@ const AllJuries = () => {
       id: id,
     };
 
-    https: await toast.promise(
+    await toast.promise(
       fetch("https://parallaxawards.herokuapp.com/modifyJury", {
         method: "PUT",
         body: JSON.stringify(data),
@@ -220,17 +220,9 @@ const AllJuries = () => {
                     cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
                     attributes={{ name: "awesome-input", id: 1 }}
                   />
-                  {app.youtubeHandle.match(
-                    /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm
-                  ) ? (
-                    <a href={app.youtubeHandle} target="_blank">
-                      {app.youtbeHandle}
-                    </a>
-                  ) : (
-                    <a href={youtubeURL + app.youtubeHandle} target="_blank">
-                      {app.youtubeHandle}
-                    </a>
-                  )}
+                  <a href={app.youtubeHandle} target="_blank">
+                    {app.youtubeHandle}
+                  </a>
                 </li>
                 <li>
                   Instagram: {""}
