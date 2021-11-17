@@ -102,6 +102,7 @@ const AllJuries = () => {
           <div className="data">
             {data.map((app) => (
               <ul key={app._id}>
+                {console.log(Object.keys(app))}
                 <button
                   className="deleteButton"
                   onClick={() => confirmDelete(app._id)}
@@ -138,7 +139,7 @@ const AllJuries = () => {
                   />
                 </li>
                 <li>
-                  Prénom: {app.firstname}{" "}
+                  Nom: {app.name}{" "}
                   <EasyEdit
                     className="easy-edit"
                     type="text"
@@ -152,7 +153,7 @@ const AllJuries = () => {
                   />
                 </li>
                 <li>
-                  Email: {app.email}{" "}
+                  Prénom: {app.firstname}{" "}
                   <EasyEdit
                     className="easy-edit"
                     type="text"
@@ -166,7 +167,7 @@ const AllJuries = () => {
                   />
                 </li>
                 <li>
-                  Téléphone:{app.phone}{" "}
+                  Email: {app.email}{" "}
                   <EasyEdit
                     className="easy-edit"
                     type="text"
@@ -180,12 +181,26 @@ const AllJuries = () => {
                   />
                 </li>
                 <li>
+                  Téléphone:{app.phone}{" "}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="text"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[6])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
+                </li>
+                <li>
                   Adresse:{app.adress}{" "}
                   <EasyEdit
                     className="easy-edit"
                     type="text"
                     onSave={(value) =>
-                      save(value, app._id, Object.keys(app)[8])
+                      save(value, app._id, Object.keys(app)[7])
                     }
                     onCancel={cancel}
                     saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
@@ -199,7 +214,7 @@ const AllJuries = () => {
                     className="easy-edit"
                     type="textarea"
                     onSave={(value) =>
-                      save(value, app._id, Object.keys(app)[14])
+                      save(value, app._id, Object.keys(app)[13])
                     }
                     onCancel={cancel}
                     saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
@@ -224,7 +239,7 @@ const AllJuries = () => {
                     className="easy-edit"
                     type="textarea"
                     onSave={(value) =>
-                      save(value, app._id, Object.keys(app)[10])
+                      save(value, app._id, Object.keys(app)[9])
                     }
                     onCancel={cancel}
                     saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
@@ -249,7 +264,7 @@ const AllJuries = () => {
                     className="easy-edit"
                     type="textarea"
                     onSave={(value) =>
-                      save(value, app._id, Object.keys(app)[11])
+                      save(value, app._id, Object.keys(app)[10])
                     }
                     onCancel={cancel}
                     saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
@@ -280,7 +295,7 @@ const AllJuries = () => {
                     className="easy-edit"
                     type="textarea"
                     onSave={(value) =>
-                      save(value, app._id, Object.keys(app)[9])
+                      save(value, app._id, Object.keys(app)[8])
                     }
                     onCancel={cancel}
                     saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
@@ -306,7 +321,7 @@ const AllJuries = () => {
                     className="easy-edit"
                     type="textarea"
                     onSave={(value) =>
-                      save(value, app._id, Object.keys(app)[12])
+                      save(value, app._id, Object.keys(app)[11])
                     }
                     onCancel={cancel}
                     saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
