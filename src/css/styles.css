@@ -95,6 +95,27 @@ li a {
   height: 15rem;
 }
 
+.pagination {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.pagination li {
+  padding: 1rem;
+}
+.pagination a {
+  color: #282c34;
+}
+
+.pagination > .active > a {
+  border-color: red;
+  color: red;
+}
+
 .edit {
   color: #aca5cf;
 }
