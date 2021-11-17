@@ -56,6 +56,13 @@ p a {
   align-items: center;
 }
 
+.pageNumber {
+  width: 100%;
+  text-align: right;
+  font-weight: bold;
+  color: #282c34;
+}
+
 .notConnected button {
   width: 15%;
 }

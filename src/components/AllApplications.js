@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const AllApplications = () => {
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState(1);
   const [perPage] = useState(3);
   const [pageCount, setPageCount] = useState(0);
   let [data, setData] = useState([]);
@@ -163,6 +163,7 @@ const AllApplications = () => {
                 ? `Il y a ${allData.length} oeuvre`
                 : `Il y a ${allData.length} oeuvres`}
             </h2>
+            <p className="pageNumber">Page {offset}</p>
             {data}
             <ReactPaginate
               previousLabel={"prev"}
