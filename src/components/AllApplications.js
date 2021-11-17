@@ -10,6 +10,7 @@ const AllApplications = () => {
   const [perPage] = useState(3);
   const [pageCount, setPageCount] = useState(0);
   let [data, setData] = useState([]);
+  let [allData, setallData] = useState([]);
   let [isLoading, setisLoading] = useState(true);
 
   let instagramURL = "https://www.instagram.com/";
@@ -18,6 +19,7 @@ const AllApplications = () => {
   const getAllApplications = async () => {
     const res = await axios.get(`https://parallaxawards.herokuapp.com/getAll`);
     const data = res.data;
+    setallData(res.data);
     const slice = data.slice(offset, offset + perPage);
     console.log(slice);
     const postData = slice.map((app) => (
@@ -149,18 +151,18 @@ const AllApplications = () => {
   if (localStorage.getItem("isLoggedIn")) {
     return (
       <div>
-        <h1>All Applications</h1>
-        <h2>
-          {data.length <= 1
-            ? `Il y a ${data.length} oeuvre`
-            : `Il y a ${data.length} oeuvres`}
-        </h2>
         {isLoading ? (
           <div className="fetching">
             <Loading />
           </div>
         ) : (
           <div className="App">
+            <h1>All Applications</h1>
+            <h2>
+              {data.length <= 1
+                ? `Il y a ${allData.length} oeuvre`
+                : `Il y a ${allData.length} oeuvres`}
+            </h2>
             {data}
             <ReactPaginate
               previousLabel={"prev"}
