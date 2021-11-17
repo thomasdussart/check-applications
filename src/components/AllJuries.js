@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { faPenAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrashAlt,
+  faCheck,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import EasyEdit from "react-easy-edit";
 
 const AllJuries = () => {
   let [data, setData] = useState([]);
   let [id, setId] = useState(0);
+  let [index, setIndex] = useState(0);
   let [isLoading, setisLoading] = useState(true);
   let [isEditing, setisEditing] = useState(false);
 
@@ -15,16 +23,35 @@ const AllJuries = () => {
   let facebookURL = "https://www.facebook.com/";
   let linkedinURL = "https://www.linkedin.com/";
 
-  const handleChange = () => {
-    setisEditing(true);
-    let span = document.getElementById("cat");
-    span.setAttribute("contenteditable", "true");
+  const cancel = () => {
+    console.log("Cancelled");
   };
 
-  const handleModify = () => {
-    setisEditing(false);
-    let newData = document.getElementById("cat").textContent;
-    console.log(newData);
+  const save = async (value, id, cat) => {
+    const data = {
+      categorie: cat,
+      text: value,
+      id: id,
+    };
+
+    console.log(data);
+
+    await toast.promise(
+      fetch("https://parallaxawards.herokuapp.com/modifyJury", {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        window.location.href = "/getJuries";
+      }),
+      {
+        pending: "Ajout en cours",
+        success: "Ajouté 👌",
+        error: "Oops, il y a eu une erreur 🤯",
+      }
+    );
   };
 
   const confirmDelete = (id) => {
@@ -88,57 +115,74 @@ const AllJuries = () => {
                 </button>
                 <input value={app._id} hidden disabled />
                 <li>
-                  Catégorie: <span id="cat">{app.categorie}</span>{" "}
-                  {isEditing ? (
-                    <input
-                      type="submit"
-                      value="Modifier"
-                      onClick={() => handleModify()}
-                    />
-                  ) : (
-                    <button
-                      className="editButton"
-                      onClick={() => handleChange()}
-                    >
-                      <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                    </button>
-                  )}
+                  Catégorie: {app.categorie}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="text"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[1])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
                 </li>
                 <li>
-                  Specialité: {app.specialite}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
+                  Spécialité: {app.specialite}{" "}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="textarea"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[2])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
                 </li>
                 <li>
-                  Nom: {app.name}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
+                  Prénom: {app.firstname}{" "}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="text"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[3])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
                 </li>
                 <li>
-                  Prénom: {app.firstname}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
+                  Email: {app.email}{" "}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="text"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[4])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
                 </li>
                 <li>
-                  Email: {app.email}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
-                </li>
-                <li>
-                  Téléphone: {app.phone}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
-                </li>
-                <li>
-                  Adresse: {app.adress}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
+                  Téléphone:{app.phone}{" "}
+                  <EasyEdit
+                    className="easy-edit"
+                    type="text"
+                    onSave={(value) =>
+                      save(value, app._id, Object.keys(app)[5])
+                    }
+                    onCancel={cancel}
+                    saveButtonLabel={<FontAwesomeIcon icon={faCheck} />}
+                    cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
+                    attributes={{ name: "awesome-input", id: 1 }}
+                  />
                 </li>
                 <li>
                   Youtube: {""}
@@ -153,9 +197,6 @@ const AllJuries = () => {
                       {app.youtubeHandle}
                     </a>
                   )}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
                 </li>
                 <li>
                   Instagram: {""}
@@ -170,9 +211,6 @@ const AllJuries = () => {
                       {app.instaHandle}
                     </a>
                   )}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
                 </li>
                 <li>
                   Facebook: {""}
@@ -193,9 +231,6 @@ const AllJuries = () => {
                       {app.facebookHandle}
                     </a>
                   )}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
                 </li>
                 <li>
                   LinkedIn: {""}
@@ -210,9 +245,6 @@ const AllJuries = () => {
                       {app.linkedinHandle}
                     </a>
                   )}
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
                 </li>
 
                 <li>
@@ -220,9 +252,6 @@ const AllJuries = () => {
                   <a href={app.website} target="_blank">
                     {app.website}
                   </a>
-                  <button className="editButton" onClick={() => handleChange()}>
-                    <FontAwesomeIcon icon={faPenAlt} className="edit" />
-                  </button>
                 </li>
               </ul>
             ))}
