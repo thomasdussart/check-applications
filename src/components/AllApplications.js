@@ -8,6 +8,7 @@ const AllApplications = () => {
   const [perPage] = useState(3);
   const [pageCount, setPageCount] = useState(0);
   const [data, setData] = useState([]);
+  const [allData, setallData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [isLoading, setisLoading] = useState(true);
 
@@ -17,7 +18,7 @@ const AllApplications = () => {
   const getAllApplications = async () => {
     const res = await axios.get(`https://parallaxawards.herokuapp.com/getAll`);
     const data = res.data;
-
+    setallData(res.data);
     const slice = data.slice(offset, offset + perPage);
 
     const postData = slice.map((app) => (
@@ -156,14 +157,15 @@ const AllApplications = () => {
           </div>
         ) : (
           <div className="App">
-            <h1>All Applications</h1>
-            {/* <h2>
-              {data.length <= 1
-                ? `Il y a ${allData.length} oeuvre`
-                : `Il y a ${allData.length} oeuvres`}
-            </h2> */}
-            <p className="pageNumber">Page {pageNumber}</p>
-            {console.log(pageNumber)}
+            <h1>All Applications</h1>{" "}
+            <div className="topPage">
+              <h2>
+                {data.length <= 1
+                  ? `Il y a ${allData.length} oeuvre`
+                  : `Il y a ${allData.length} oeuvres`}
+              </h2>{" "}
+              <p className="pageNumber">Page {pageNumber}</p>
+            </div>
             {data}
             <ReactPaginate
               previousLabel={"< prev"}

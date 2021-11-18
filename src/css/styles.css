@@ -56,6 +56,16 @@ p a {
   align-items: center;
 }
 
+.topPage {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: -3rem;
+}
+
+.topPage h2 {
+  width: 25rem;
+}
+
 .pageNumber {
   width: 100%;
   text-align: right;
