@@ -45,6 +45,11 @@ const Menu = () => {
             Emails Jury
           </Link>
         </p>
+        <p className="">
+          <Link className="" to={"/test"}>
+            page
+          </Link>
+        </p>
         <button
           className="disconnect"
           onClick={() => {

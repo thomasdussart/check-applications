@@ -3,6 +3,7 @@ import Loading from "./Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrashAlt,
+  faPenAlt,
   faCheck,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
@@ -89,6 +90,7 @@ const AllJuries = () => {
     return (
       <div>
         <h1>All Juries</h1>
+
         <h2>
           {data.length <= 1
             ? `Il y a ${data.length} jury`
@@ -114,6 +116,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="text"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[1])
                     }
@@ -128,6 +131,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="textarea"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[2])
                     }
@@ -142,6 +146,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="text"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[3])
                     }
@@ -156,6 +161,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="text"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[4])
                     }
@@ -170,6 +176,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="text"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[5])
                     }
@@ -184,6 +191,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="text"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[6])
                     }
@@ -198,6 +206,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="text"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[7])
                     }
@@ -212,6 +221,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="textarea"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[13])
                     }
@@ -229,6 +239,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="textarea"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[9])
                     }
@@ -254,6 +265,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="textarea"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[10])
                     }
@@ -285,6 +297,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="textarea"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[8])
                     }
@@ -311,6 +324,7 @@ const AllJuries = () => {
                   <EasyEdit
                     className="easy-edit"
                     type="textarea"
+                    value={<FontAwesomeIcon icon={faPenAlt} />}
                     onSave={(value) =>
                       save(value, app._id, Object.keys(app)[11])
                     }

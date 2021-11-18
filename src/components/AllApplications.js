@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const AllApplications = () => {
-  const [offset, setOffset] = useState(1);
+  const [offset, setOffset] = useState(0);
   const [perPage] = useState(3);
   const [pageCount, setPageCount] = useState(0);
-  let [data, setData] = useState([]);
-  let [allData, setallData] = useState([]);
-  let [isLoading, setisLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
 
   let instagramURL = "https://www.instagram.com/";
   let facebookURL = "https://www.facebook.com/";
@@ -19,7 +19,7 @@ const AllApplications = () => {
   const getAllApplications = async () => {
     const res = await axios.get(`https://parallaxawards.herokuapp.com/getAll`);
     const data = res.data;
-    setallData(res.data);
+    setAllData(data);
     const slice = data.slice(offset, offset + perPage);
     console.log(slice);
     const postData = slice.map((app) => (
@@ -108,41 +108,41 @@ const AllApplications = () => {
     });
   };
 
-  const getAll = () => {
-    fetch("https://parallaxawards.herokuapp.com/getAll")
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        throw res;
-      })
-      .then((app) => {
-        setData(app);
-      })
-      .catch((error) => {
-        console.error("Error fetching data :", error);
-      })
-      .finally(() => {
-        setisLoading(false);
-      });
-  };
+  // const getAll = () => {
+  //   fetch("https://parallaxawards.herokuapp.com/getAll")
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //       throw res;
+  //     })
+  //     .then((app) => {
+  //       setData(app);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data :", error);
+  //     })
+  //     .finally(() => {
+  //       setisLoading(false);
+  //     });
+  // };
 
-  const confirmDelete = (id) => {
-    let isConfirm = window.confirm(
-      "Êtes-vous sûr de vouloir supprimer cettte candidature?"
-    );
-    if (isConfirm) {
-      handleDelete(id);
-    }
-  };
+  // const confirmDelete = (id) => {
+  //   let isConfirm = window.confirm(
+  //     "Êtes-vous sûr de vouloir supprimer cettte candidature?"
+  //   );
+  //   if (isConfirm) {
+  //     handleDelete(id);
+  //   }
+  // };
 
-  const handleDelete = (id) => {
-    fetch(`https://parallaxawards.herokuapp.com/deleteApplication/${id}`, {
-      method: "DELETE",
-    }).then((res) => {
-      window.location.reload();
-    });
-  };
+  // const handleDelete = (id) => {
+  //   fetch(`https://parallaxawards.herokuapp.com/deleteApplication/${id}`, {
+  //     method: "DELETE",
+  //   }).then((res) => {
+  //     window.location.reload();
+  //   });
+  // };
 
   useEffect(() => {
     getAllApplications();
@@ -166,11 +166,12 @@ const AllApplications = () => {
             <p className="pageNumber">Page {offset}</p>
             {data}
             <ReactPaginate
-              previousLabel={"prev"}
-              nextLabel={"next"}
+              previousLabel={"< prev"}
+              nextLabel={"next >"}
               breakLabel={"..."}
               breakClassName={"break-me"}
               pageCount={pageCount}
+              initialPage={0}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
               onPageChange={handlePageClick}
