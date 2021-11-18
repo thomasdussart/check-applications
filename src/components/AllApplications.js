@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const AllApplications = () => {
   const [offset, setOffset] = useState(0);
   const [perPage] = useState(3);
   const [pageCount, setPageCount] = useState(0);
   const [data, setData] = useState([]);
-  const [allData, setAllData] = useState([]);
   const [isLoading, setisLoading] = useState(true);
 
   let instagramURL = "https://www.instagram.com/";
@@ -19,9 +16,9 @@ const AllApplications = () => {
   const getAllApplications = async () => {
     const res = await axios.get(`https://parallaxawards.herokuapp.com/getAll`);
     const data = res.data;
-    setAllData(data);
+
     const slice = data.slice(offset, offset + perPage);
-    console.log(slice);
+
     const postData = slice.map((app) => (
       <div className="data">
         <ul key={app._id}>
@@ -100,7 +97,7 @@ const AllApplications = () => {
   };
   const handlePageClick = (e) => {
     const selectedPage = e.selected;
-    setOffset(selectedPage + 1);
+    setOffset(selectedPage * perPage);
     window.scrollTo({
       top: 0,
       left: 0,
@@ -158,11 +155,11 @@ const AllApplications = () => {
         ) : (
           <div className="App">
             <h1>All Applications</h1>
-            <h2>
+            {/* <h2>
               {data.length <= 1
                 ? `Il y a ${allData.length} oeuvre`
                 : `Il y a ${allData.length} oeuvres`}
-            </h2>
+            </h2> */}
             <p className="pageNumber">Page {offset}</p>
             {data}
             <ReactPaginate
