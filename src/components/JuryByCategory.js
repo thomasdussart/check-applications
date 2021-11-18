@@ -213,7 +213,7 @@ const JuryByCategory = () => {
 
                 <li>
                   Website:{" "}
-                  <a href={cat.website} target="_blank">
+                  <a href={"//" + cat.website} target="_blank">
                     {cat.website}
                   </a>
                   <button className="editButton">

@@ -10,7 +10,6 @@ import AddJury from "./components/AddJury";
 import JuryByCategory from "./components/JuryByCategory";
 import AllJuries from "./components/AllJuries";
 import AllEmailJury from "./components/AllEmailJury";
-import Test from "./components/Test";
 
 function App() {
   return (
@@ -32,7 +31,6 @@ function App() {
             {<Route path="/getJuriesByCategory" component={JuryByCategory} />}
             {<Route path="/all-emails" component={AllEmail} />}
             {<Route path="/all-emails-juries" component={AllEmailJury} />}
-            {<Route path="/test" component={Test} />}
           </Switch>
         </section>
       </div>

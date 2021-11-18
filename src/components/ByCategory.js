@@ -130,7 +130,7 @@ const ByCategory = () => {
                 </li>
                 <li>
                   Website:{" "}
-                  <a href={cat.website} target="_blank">
+                  <a href={"//" + cat.website} target="_blank">
                     {cat.website}
                   </a>
                 </li>

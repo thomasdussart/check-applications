@@ -73,7 +73,7 @@ const AllApplications = () => {
           </li>
           <li>
             Website:{" "}
-            <a href={app.website} target="_blank">
+            <a href={"//" + app.website} target="_blank">
               {app.website}
             </a>
           </li>

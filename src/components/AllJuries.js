@@ -333,15 +333,9 @@ const AllJuries = () => {
                     cancelButtonLabel={<FontAwesomeIcon icon={faTimes} />}
                     attributes={{ name: "awesome-input", id: 1 }}
                   />
-                  {app.website.match(/https?:\/\//g) ? (
-                    <a href={app.website} target="_blank">
-                      {app.website}
-                    </a>
-                  ) : (
-                    <a href={"https://" + app.website} target="_blank">
-                      {"https://" + app.website}
-                    </a>
-                  )}
+                  <a href={"//" + app.website} target="_blank">
+                    {app.website}
+                  </a>
                 </li>
               </ul>
             ))}
