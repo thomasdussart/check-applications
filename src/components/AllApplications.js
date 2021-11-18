@@ -8,6 +8,7 @@ const AllApplications = () => {
   const [perPage] = useState(3);
   const [pageCount, setPageCount] = useState(0);
   const [data, setData] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
   const [isLoading, setisLoading] = useState(true);
 
   let instagramURL = "https://www.instagram.com/";
@@ -98,6 +99,7 @@ const AllApplications = () => {
   const handlePageClick = (e) => {
     const selectedPage = e.selected;
     setOffset(selectedPage * perPage);
+    setPageNumber(selectedPage + 1);
     window.scrollTo({
       top: 0,
       left: 0,
@@ -160,7 +162,8 @@ const AllApplications = () => {
                 ? `Il y a ${allData.length} oeuvre`
                 : `Il y a ${allData.length} oeuvres`}
             </h2> */}
-            <p className="pageNumber">Page {offset}</p>
+            <p className="pageNumber">Page {pageNumber}</p>
+            {console.log(pageNumber)}
             {data}
             <ReactPaginate
               previousLabel={"< prev"}
