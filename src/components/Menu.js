@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Menu = () => {
+const Menu = (props) => {
   if (localStorage.getItem("isLoggedIn")) {
     return (
       <div>

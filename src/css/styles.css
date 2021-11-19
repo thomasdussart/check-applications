@@ -23,12 +23,12 @@ html {
 .App-menu {
   letter-spacing: 0.2ch;
   word-wrap: break-word;
+  border-right: solid 1px #282c34;
 }
 
 .hideMenu,
 .openMenu {
   text-align: right;
-  border-right: 1px solid black;
 }
 
 .hideMenu button,

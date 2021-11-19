@@ -28,14 +28,14 @@ function App() {
       </header>
       <div className="App-page">
         {isOpen ? (
-          <div className="openMenu">
-            <button onClick={handleOpen}>
-              <FontAwesomeIcon icon={faArrowLeft} className="hideShowMenu" />
-            </button>
-            <nav className="App-menu ">
-              <Menu />
-            </nav>
-          </div>
+          <nav className="App-menu ">
+            <div className="openMenu">
+              <button onClick={handleOpen}>
+                <FontAwesomeIcon icon={faArrowLeft} className="hideShowMenu" />
+              </button>
+            </div>
+            <Menu />
+          </nav>
         ) : (
           <div className="hideMenu">
             <button onClick={handleOpen}>
