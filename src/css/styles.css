@@ -130,16 +130,21 @@ li a {
 .pagination {
   display: flex;
   list-style: none;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin: 1rem;
   cursor: pointer;
 }
 
 .pagination li {
-  padding: 1rem;
+  border: 1px solid #282c34;
+  padding: 0;
 }
 .pagination a {
+  display: block;
+
+  padding-left: 1rem;
+  padding-right: 1rem;
   color: #282c34;
 }
 
@@ -352,16 +357,24 @@ div.notConnectd {
     width: 70%;
     word-wrap: break-word;
   }
-
   .pagination {
     display: flex;
-    width: 8rem;
-    justify-content: center;
     list-style: none;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
     cursor: pointer;
   }
 
+  .pagination li {
+    border: 1px solid #282c34;
+    padding: 0;
+  }
   .pagination a {
+    display: block;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
     color: #282c34;
   }
 
