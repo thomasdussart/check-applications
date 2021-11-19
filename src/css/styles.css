@@ -22,8 +22,22 @@ html {
 
 .App-menu {
   letter-spacing: 0.2ch;
-  border-right: 1px solid black;
   word-wrap: break-word;
+}
+
+.hideMenu,
+.openMenu {
+  text-align: right;
+  border-right: 1px solid black;
+}
+
+.hideMenu button,
+.openMenu button {
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  color: #282c34;
+  cursor: pointer;
 }
 
 .App-menu h2 {
@@ -84,6 +98,18 @@ div.addJury {
 .App-content {
   width: 60%;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    margin: 0;
+    width: 100%;
+  }
+
+  .App-content {
+    width: 90%;
+    word-wrap: break-word;
+  }
 }
 
 .deleteButton {
