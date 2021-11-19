@@ -103,7 +103,7 @@ const AllJuries = () => {
         ) : (
           <div className="data">
             {data.map((app) => (
-              <ul key={app._id}>
+              <ul key={app._id} className="allJuries">
                 <button
                   className="deleteButton"
                   onClick={() => confirmDelete(app._id)}
