@@ -355,7 +355,7 @@ div.notConnectd {
 
   .pagination {
     display: flex;
-    width: 4rem;
+    width: 8rem;
     justify-content: center;
     list-style: none;
     cursor: pointer;
