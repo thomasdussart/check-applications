@@ -103,11 +103,14 @@ div.addJury {
 @media screen and (max-width: 600px) {
   body {
     margin: 0;
+  }
+
+  .App-menu {
     width: 100%;
   }
 
   .App-content {
-    width: 90%;
+    width: 70%;
     word-wrap: break-word;
   }
 }
